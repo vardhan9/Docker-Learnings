@@ -1,0 +1,34 @@
+ commands:
+docker build -t app-name . , To build docker image
+docker images , To see the docker images
+docker run -p 5001:5001 imageName, To run the docker image
+ 
+ * Running on http://127.0.0.1:5001 - IP of local
+ * Running on http://172.17.0.2:5001 - IP inside the container, we cannot access it directly. So we use the
+                                        localhost to access
+
+Pushing image to docker hub:
+docker login  , to authenticate
+
+it is important to follow good practice "username/appname"
+docker tag oneshot-docker rajamarthala/oneshot-docker
+
+docker image rm -f imageName ,to remove docker image
+
+docker push rajamarthala/oneshot-docker:latest ,To push to docker hub repository
+
+docker pull rajamarthala/oneshot-docker:latest , To pull from docker hub repository to local
+
+docker run -d -p 5001:5001 rajamarthala/oneshot-docker:latest, To run in detached mode
+
+--------------------------------------------------------------------------------------------------------------------------------
+DOCKER VOLUMES
+docker run -p 5001:5001 -v M:\Learning_Workspace\OneShotLearning\Oneshot-DOCKER\app.py:/app/app.py  oneshot-docker,
+
+When changes are made in host machine , it immediately those changes will the in container.
+This is helpful to see the changes after code is updated.
+
+--------------------------------------------------------------------------------------------------------------------
+Docker compose : is used to when a contaner needs use services of other containers
+for example web application needs to have frontend, backend and database. All these cannot be run in single container,
+so they will run in different containers. Here comes the docker compose role.
